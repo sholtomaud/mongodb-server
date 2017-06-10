@@ -1,0 +1,15 @@
+mongodb-server:
+    build: "."
+    mem_limit: 128m
+    restart: always
+    container_name: mongodb-server
+    ports:
+      - 8080
+    environment:
+      NODE_ENV: production
+    labels:
+      SERVICE_80_NAME: mongodb-server
+      SERVICE_80_CHECK_HTTP: /
+      SERVICE_80_CHECK_INTERVAL: 10s
+      SERVICE_443_IGNORE: 'yes'
+      SERVICE_TAGS: production
